@@ -1,8 +1,8 @@
-resource "aws_s3_bucket" "bucket" {
-  bucket = var.bucket_name
+provider "aws" {
+  region = "us-west-2"
 }
 
-resource "aws_s3_bucket_acl" "bucket_acl" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "private"
+module "s3_bucket_module" {
+    source = "./mod1"
+    bucket_name = var.bucket_name
 }
